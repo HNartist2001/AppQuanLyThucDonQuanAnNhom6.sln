@@ -17,7 +17,6 @@ namespace RestaurantAppUI
             if (ValidateForm())
             {
                 LoginModel model = new LoginModel(LoginUsernameField.Text, LoginPasswordField.Text);
-                GlobalConfig.InitializeConnections(DatabaseType.Sql);
                 CustomerModel CustomerInfo = GlobalConfig.Connection.LoginChecking(model);
                 if (CustomerInfo != null)
                 {

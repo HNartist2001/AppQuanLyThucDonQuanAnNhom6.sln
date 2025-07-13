@@ -12,10 +12,10 @@ namespace RestaurantAppUI
         [STAThread]
         static void Main()
         {
-            var Config = new ConfigurationBuilder().AddUserSecrets<SecretAnchor>().Build();
-            GlobalConfig.CnnString = Config["ConnectionStrings:Default"];
-
+            GlobalConfig.InitializeConnections(DatabaseType.Sql);
+            GlobalConfig.CnnString = GlobalConfig.GetConnectionStringFromUserSecret("Default", typeof(Program));
             Application.Run(new LoginForm());
+            //Here's a new line!
         }
     }
 }
